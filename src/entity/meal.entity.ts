@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { UserEntity } from './user.entity';
 
 @Entity()
 export class Meal {
@@ -8,16 +15,19 @@ export class Meal {
   @Column()
   name: string;
 
-
   @Column('text')
   ingrid: string;
 
   @Column('text')
   cooking: string;
 
-   @Column()
+  @Column()
   teg?: string;
 
   @Column({ default: false })
   isLike?: boolean;
+
+  // @ManyToMany(() => UserEntity, (user) => user.id, { nullable: true })
+  // @JoinTable()
+  // user: UserEntity;
 }
