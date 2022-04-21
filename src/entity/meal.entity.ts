@@ -1,3 +1,4 @@
+import { Blob } from 'buffer';
 import {
   Entity,
   Column,
@@ -24,10 +25,17 @@ export class Meal {
   @Column()
   teg?: string;
 
+  @Column()
+  img?: string;
+  // @Column({ type: 'mediumblob' })
+  // img?: Buffer;
+  // @Column({ type: 'mediumblob' })
+  // img?: Blob;
+
   @Column({ default: false })
   isLike?: boolean;
 
-  // @ManyToMany(() => UserEntity, (user) => user.id, { nullable: true })
-  // @JoinTable()
-  // user: UserEntity;
+  @ManyToMany(() => UserEntity, (user) => user.meals)
+  @JoinTable()
+  user: UserEntity;
 }

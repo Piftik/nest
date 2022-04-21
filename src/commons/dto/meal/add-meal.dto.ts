@@ -3,5 +3,6 @@ export interface AddMealDto {
   teg?: string;
   ingrid: string;
   cooking: string;
-
+  img?: string;
+  // img?: Blob;
 }
